@@ -16,19 +16,19 @@ public class teleOp extends LinearOpMode {
 
     public void runOpMode() throws InterruptedException {
 
-        /* all the used classes */
+        // all the used classes
         Parts robot = new Parts(hardwareMap);
         NewArm arm = new NewArm();
         GearClaw claw = new GearClaw();
         BasicDrive drive = new BasicDrive();
 
-        waitForStart(); /* initialize */
+        waitForStart(); // initialize
 
-        /* reset the encoder ticks for arm motors */
+        // reset the encoder ticks for arm motors
         Parts.slide.setTargetPosition(0);
         Parts.arm.setTargetPosition(0);
 
-        /* set the power used for arm motors to 1 */
+        // set the power used for arm motors to 1
         arm.armPower(1);
         arm.extendPower(1);
 
@@ -38,17 +38,17 @@ public class teleOp extends LinearOpMode {
 
         while (opModeIsActive()) {
 
-            /* arm controls */
+            // arm controls
             arm.up(gamepad2.dpad_up);
             arm.down(gamepad2.dpad_down);
             arm.armStop(!(gamepad2.dpad_up || gamepad2.dpad_down));
 
-            /* extend controls */
+            // extend controls
             arm.extend(gamepad2.right_trigger);
             arm.retract(gamepad2.left_trigger);
             arm.slideStop((gamepad2.left_trigger == 0 && gamepad2.right_trigger == 0 && !gamepad2.dpad_up && !gamepad2.dpad_down));
 
-            /* claw controls */
+            // claw controls
             claw.grabs(gamepad2.right_bumper);
             claw.drops(gamepad2.left_bumper);
 
@@ -56,7 +56,7 @@ public class teleOp extends LinearOpMode {
             claw.specimen(gamepad2.y);
             claw.sample(gamepad2.a);
 
-            /* drive train controls */
+            // drive train controls
             drive.feildCentric(gamepad1);
 
 
