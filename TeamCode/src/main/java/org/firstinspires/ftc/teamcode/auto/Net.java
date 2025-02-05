@@ -21,7 +21,8 @@ public class Net extends LinearOpMode {
         arm.armPower(1);
         arm.extendPower(1);
 
-        claw.openClosePose(0.4, 0.7);
+        claw.openClosePose(0.4, 0.8);
+        claw.sampSpecPose(0.075, 0.6);
 
         waitForStart();
 
