@@ -34,8 +34,8 @@ public class teleOp extends LinearOpMode {
 
         // set claw open and close positions
         //claw.openClosePose(0.35, 0.5);
-        claw.openClosePose(0.4, 0.8); // I'm never letting jacob r touch this code again
-        claw.sampSpecPose(0.075, 0.6);
+        claw.openClosePose(0.375, 0.8); // I'm never letting jacob r touch this code again
+        claw.sampSpecPose(0.075, 0.55);
 
         while (opModeIsActive()) {
 
