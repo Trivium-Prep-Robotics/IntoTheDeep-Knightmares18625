@@ -26,8 +26,9 @@ public class teleOp extends LinearOpMode {
         waitForStart(); // initialize
 
         // reset the encoder ticks for arm motors
-        Parts.slide.setTargetPosition(0);
-        Parts.arm.setTargetPosition(0);
+        Parts.slide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        Parts.piv1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        Parts.piv1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         // set the power used for arm motors to 1
         arm.armPower(1);
@@ -63,7 +64,7 @@ public class teleOp extends LinearOpMode {
 
 
             // update every loop
-            telemetry.addLine("arm:" + Parts.arm.getCurrentPosition());
+            telemetry.addLine("arm:" + Parts.piv1.getCurrentPosition());
             telemetry.addLine("slide:" + Parts.slide.getCurrentPosition());
 
             telemetry.update();
