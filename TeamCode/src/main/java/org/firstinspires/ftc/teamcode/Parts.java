@@ -12,7 +12,7 @@ public class Parts {
 
     // declaring parts
     public static DcMotor FR, FL, BR, BL;
-    public static DcMotor arm;
+    public static DcMotor piv1, piv2, arm;
     public static DcMotor slide;
     public static Servo claw, wrist;
 
@@ -68,11 +68,15 @@ public class Parts {
         BR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         FL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        // assigning arm
-        arm = hardwareMap.get(DcMotor.class, "arm");
-        arm.setDirection(DcMotorSimple.Direction.REVERSE);
-        arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        arm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        // assigning arm pivot motors
+        piv1 = hardwareMap.get(DcMotor.class, "pivot 1");
+        piv2 = hardwareMap.get(DcMotor.class, "pivot 2");
+        piv1.setDirection(DcMotorSimple.Direction.REVERSE);
+        piv2.setDirection(DcMotorSimple.Direction.REVERSE);
+        piv1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        piv2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        piv1.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        piv2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         // assigning slides
         slide = hardwareMap.get(DcMotor.class, "slide");
@@ -80,7 +84,8 @@ public class Parts {
         slide.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         // when setPower(0) -> motors brake
-        arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        piv1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        piv2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         slide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         // assigning claw and wrist servo

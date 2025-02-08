@@ -9,6 +9,7 @@ import org.firstinspires.ftc.teamcode.Parts;
 import org.firstinspires.ftc.teamcode.parts.BasicDrive;
 import org.firstinspires.ftc.teamcode.parts.GearClaw;
 import org.firstinspires.ftc.teamcode.parts.NewArm;
+import org.firstinspires.ftc.teamcode.parts.StateArm;
 
 @TeleOp (name = "teleOp", group = "TELEOP")
 public class teleOp extends LinearOpMode {
@@ -18,7 +19,7 @@ public class teleOp extends LinearOpMode {
 
         // all the used classes
         Parts robot = new Parts(hardwareMap);
-        NewArm arm = new NewArm();
+        StateArm arm = new StateArm();
         GearClaw claw = new GearClaw();
         BasicDrive drive = new BasicDrive();
 

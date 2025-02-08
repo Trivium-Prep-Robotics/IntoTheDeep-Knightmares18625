@@ -7,12 +7,13 @@ import org.firstinspires.ftc.teamcode.Parts;
 import org.firstinspires.ftc.teamcode.parts.BasicDrive;
 import org.firstinspires.ftc.teamcode.parts.GearClaw;
 import org.firstinspires.ftc.teamcode.parts.NewArm;
+import org.firstinspires.ftc.teamcode.parts.StateArm;
 
 @Autonomous (name = "Net side")
 public class Net extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         Parts robot = new Parts(hardwareMap);
-        NewArm arm = new NewArm();
+        StateArm arm = new StateArm();
         GearClaw claw = new GearClaw();
         BasicDrive drive = new BasicDrive();
 
