@@ -134,8 +134,10 @@ public class StateArm implements Arm{
 
             Parts.piv1.setTargetPosition(Parts.setArm);
             Parts.piv2.setTargetPosition(Parts.setArm);
+
             Parts.piv1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             Parts.piv2.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
             Parts.piv1.setPower(Parts.armPower);
             Parts.piv2.setPower(Parts.armPower);
             if (Parts.piv1.getCurrentPosition() > Parts.setArm - 1 || Parts.piv1.getCurrentPosition() < Parts.setArm + 1) {

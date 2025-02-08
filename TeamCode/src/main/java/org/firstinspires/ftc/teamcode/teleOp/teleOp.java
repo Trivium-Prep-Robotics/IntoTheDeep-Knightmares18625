@@ -8,7 +8,6 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 import org.firstinspires.ftc.teamcode.Parts;
 import org.firstinspires.ftc.teamcode.parts.BasicDrive;
 import org.firstinspires.ftc.teamcode.parts.GearClaw;
-import org.firstinspires.ftc.teamcode.parts.NewArm;
 import org.firstinspires.ftc.teamcode.parts.StateArm;
 
 @TeleOp (name = "teleOp", group = "TELEOP")
@@ -26,9 +25,9 @@ public class teleOp extends LinearOpMode {
         waitForStart(); // initialize
 
         // reset the encoder ticks for arm motors
-        Parts.slide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        Parts.piv1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        Parts.piv1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        Parts.slide.setTargetPosition(0);
+        Parts.piv1.setTargetPosition(0);
+        Parts.piv2.setTargetPosition(0);
 
         // set the power used for arm motors to 1
         arm.armPower(1);
@@ -68,8 +67,6 @@ public class teleOp extends LinearOpMode {
             telemetry.addLine("slide:" + Parts.slide.getCurrentPosition());
 
             telemetry.update();
-
         }
-
     }
 }

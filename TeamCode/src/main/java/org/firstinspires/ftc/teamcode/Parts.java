@@ -69,12 +69,15 @@ public class Parts {
         FL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         // assigning arm pivot motors
-        piv1 = hardwareMap.get(DcMotor.class, "pivot 1");
-        piv2 = hardwareMap.get(DcMotor.class, "pivot 2");
+        piv1 = hardwareMap.get(DcMotor.class, "pivotOne");
+        piv2 = hardwareMap.get(DcMotor.class, "pivotTwo");
+
         piv1.setDirection(DcMotorSimple.Direction.REVERSE);
         piv2.setDirection(DcMotorSimple.Direction.REVERSE);
+
         piv1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         piv2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
         piv1.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         piv2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
