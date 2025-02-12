@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.teleOp;
 
-
 import static com.pedropathing.follower.FollowerConstants.leftFrontMotorName;
 import static com.pedropathing.follower.FollowerConstants.leftRearMotorName;
 import static com.pedropathing.follower.FollowerConstants.rightFrontMotorName;
@@ -13,9 +12,10 @@ import static com.pedropathing.follower.FollowerConstants.rightRearMotorDirectio
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
-import com.pedropathing.localization.GoBildaPinpointDriver;
-import com.pedropathing.localization.constants.PinpointConstants;
+import com.pedropathing.localization.Pose;
+import com.pedropathing.localization.localizers.PinpointLocalizer;
 import com.pedropathing.util.Constants;
+import com.qualcomm.hardware.sparkfun.SparkFunOTOS;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -41,9 +41,9 @@ import org.firstinspires.ftc.teamcode.util.pedroPathing.constants.*;
  * @version 1.0, 5/6/2024
  */
 @Config
-@TeleOp(group = "Teleop Test", name = "Localization Test")
+@TeleOp(group = "Teleop Test", name = "Localization Test gay")
 public class TestLocalizer extends OpMode {
-    private PoseUpdater poseUpdater;
+    private PinpointLocalizer pinpointLocalizer;
     private DashboardPoseTracker dashboardPoseTracker;
     private Telemetry telemetryA;
 
@@ -51,7 +51,6 @@ public class TestLocalizer extends OpMode {
     private DcMotorEx leftRear;
     private DcMotorEx rightFront;
     private DcMotorEx rightRear;
-    private GoBildaPinpointDriver driver;
     private List<DcMotorEx> motors;
 
     /**
@@ -60,9 +59,9 @@ public class TestLocalizer extends OpMode {
     @Override
     public void init() {
         Constants.setConstants(FConstants.class, LConstants.class);
-        poseUpdater = new PoseUpdater(hardwareMap);
+        pinpointLocalizer = new PinpointLocalizer(hardwareMap, new Pose(0, 0, 0));
 
-        dashboardPoseTracker = new DashboardPoseTracker(poseUpdater);
+        dashboardPoseTracker = new DashboardPoseTracker(new PoseUpdater(hardwareMap));
 
         leftFront = hardwareMap.get(DcMotorEx.class, leftFrontMotorName);
         leftRear = hardwareMap.get(DcMotorEx.class, leftRearMotorName);
@@ -72,9 +71,6 @@ public class TestLocalizer extends OpMode {
         leftRear.setDirection(leftRearMotorDirection);
         rightFront.setDirection(rightFrontMotorDirection);
         rightRear.setDirection(rightRearMotorDirection);
-        driver = hardwareMap.get(GoBildaPinpointDriver.class, PinpointConstants.hardwareMapName);
-        driver.recalibrateIMU();
-        driver.resetPosAndIMU();
 
         motors = Arrays.asList(leftFront, leftRear, rightFront, rightRear);
 
@@ -93,7 +89,7 @@ public class TestLocalizer extends OpMode {
                 + "allowing robot control through a basic mecanum drive on gamepad 1.");
         telemetryA.update();
 
-        Drawing.drawRobot(poseUpdater.getPose(), "#4CAF50");
+        Drawing.drawRobot(pinpointLocalizer.getPose(), "#4CAF50");
         Drawing.sendPacket();
     }
 
@@ -103,7 +99,7 @@ public class TestLocalizer extends OpMode {
      */
     @Override
     public void loop() {
-        poseUpdater.update();
+        pinpointLocalizer.update();
         dashboardPoseTracker.update();
 
         double y = -gamepad1.left_stick_y; // Remember, this is reversed!
@@ -124,14 +120,14 @@ public class TestLocalizer extends OpMode {
         rightFront.setPower(rightFrontPower);
         rightRear.setPower(rightRearPower);
 
-        telemetryA.addData("x", poseUpdater.getPose().getX());
-        telemetryA.addData("y", poseUpdater.getPose().getY());
-        telemetryA.addData("heading", poseUpdater.getPose().getHeading());
-        telemetryA.addData("total heading", poseUpdater.getTotalHeading());
+        telemetryA.addData("x", pinpointLocalizer.getPose().getX());
+        telemetryA.addData("y", pinpointLocalizer.getPose().getY());
+        telemetryA.addData("heading", pinpointLocalizer.getPose().getHeading());
+        telemetryA.addData("total heading", pinpointLocalizer.getTotalHeading());
         telemetryA.update();
 
         Drawing.drawPoseHistory(dashboardPoseTracker, "#4CAF50");
-        Drawing.drawRobot(poseUpdater.getPose(), "#4CAF50");
+        Drawing.drawRobot(pinpointLocalizer.getPose(), "#4CAF50");
         Drawing.sendPacket();
     }
 }
