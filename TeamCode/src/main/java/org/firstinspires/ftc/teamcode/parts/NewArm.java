@@ -18,45 +18,52 @@ public class NewArm implements Arm{
     /* up movement methods for the arm */
     public void up(boolean move) {
         if (move && !Parts.lims) {
-            Parts.arm.setPower(Parts.armPower);
+            Parts.piv1.setPower(Parts.armPower);
+            Parts.piv2.setPower(Parts.armPower);
             Parts.slide.setPower(Parts.armPower * Parts.armToExtend);
-        } else if (move && (Parts.arm.getCurrentPosition() < Parts.armHigh || Parts.arm.getCurrentPosition() == 0)) {
-            Parts.arm.setPower(Parts.armPower);
+        } /*else if (move && (Parts.arm.getCurrentPosition() < Parts.armHigh || Parts.arm.getCurrentPosition() == 0)) {
+            Parts.piv1.setPower(Parts.armPower);
             Parts.slide.setPower(Parts.armPower * Parts.armToExtend);
-        }
+        }*/
     }
 
     public void up(int sec) throws InterruptedException{
-        Parts.arm.setPower(Parts.armPower);
+        Parts.piv1.setPower(Parts.armPower);
+        Parts.piv2.setPower(Parts.armPower);
         Parts.slide.setPower(Parts.armPower * Parts.armToExtend);
         Thread.sleep(sec);
-        Parts.arm.setPower(0);
+        Parts.piv1.setPower(0);
+        Parts.piv2.setPower(0);
         Parts.slide.setPower(0);
     }
 
     /* down movement methods for the arm */
     public void down(boolean move) {
         if (move && !Parts.lims) {
+            Parts.piv1.setPower(-Parts.armPower);
+            Parts.piv2.setPower(-Parts.armPower);
+            Parts.slide.setPower(-Parts.armPower * Parts.armToExtend);
+        }/* else if (move && Parts.arm.getCurrentPosition() > Parts.armLow) {
             Parts.arm.setPower(-Parts.armPower);
             Parts.slide.setPower(-Parts.armPower * Parts.armToExtend);
-        } else if (move && Parts.arm.getCurrentPosition() > Parts.armLow) {
-            Parts.arm.setPower(-Parts.armPower);
-            Parts.slide.setPower(-Parts.armPower * Parts.armToExtend);
-        }
+        }*/
     }
 
     public void down(int sec) throws InterruptedException{
-        Parts.arm.setPower(-Parts.armPower);
+        Parts.piv1.setPower(-Parts.armPower);
+        Parts.piv2.setPower(-Parts.armPower);
         Parts.slide.setPower(-Parts.armPower * Parts.armToExtend);
         Thread.sleep(sec);
-        Parts.arm.setPower(0);
+        Parts.piv1.setPower(0);
+        Parts.piv2.setPower(0);
         Parts.slide.setPower(0);
     }
 
     /* method to check to stop the arm */
     public void armStop(boolean stop) {
         if (stop) {
-            Parts.arm.setPower(0);
+            Parts.piv1.setPower(0);
+            Parts.piv2.setPower(0);
         }
     }
 
@@ -118,7 +125,7 @@ public class NewArm implements Arm{
 
     /* limit methods for the arm and extention */
     public void armLims() {
-        if ((Parts.arm.getCurrentPosition() < Parts.armHigh || Parts.arm.getCurrentPosition() < Parts.armHigh) && (Parts.arm.getCurrentPosition() > Parts.armLow)) {
+        /*if ((Parts.arm.getCurrentPosition() < Parts.armHigh || Parts.arm.getCurrentPosition() < Parts.armHigh) && (Parts.arm.getCurrentPosition() > Parts.armLow)) {
             Parts.inEncoderA = false;
         } else if (Parts.arm.getCurrentPosition() < Parts.armLow) {
             Parts.inEncoderA = true;
@@ -128,7 +135,7 @@ public class NewArm implements Arm{
             Parts.setArm = Parts.armHigh;
         } else {
             Parts.inEncoderA = false;
-        }
+        }*/
     }
 
     public void slideLims() {
@@ -145,7 +152,7 @@ public class NewArm implements Arm{
 
     /* methods to start encoders */
     public void armGo() {
-        if (Parts.inEncoderA) {
+        /*if (Parts.inEncoderA) {
             Parts.arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
             Parts.arm.setTargetPosition(Parts.setArm);
@@ -157,7 +164,7 @@ public class NewArm implements Arm{
 
             Parts.arm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        }
+        }*/
 
     }
 
