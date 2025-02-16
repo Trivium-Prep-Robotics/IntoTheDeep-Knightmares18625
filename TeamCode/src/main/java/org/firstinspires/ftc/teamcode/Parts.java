@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.pedropathing.follower.Follower;
+import com.pedropathing.localization.Pose;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -15,6 +17,7 @@ public class Parts {
     public static DcMotor piv1, piv2, arm;
     public static DcMotor slide;
     public static Servo claw, wrist;
+    public static Follower follower;
 
     public static IMU imu;
     IMU.Parameters myIMUparameters;
@@ -50,6 +53,10 @@ public class Parts {
 
     public static double sample;
     public static double specimen;
+
+    public final Pose startPose = new Pose(0,0,0);
+
+    public static Pose currentPose = new Pose(0,0,0);
 
     public Parts(HardwareMap hardwareMap) {
 
@@ -106,5 +113,9 @@ public class Parts {
         );
         imu.initialize(myIMUparameters);
         imu.resetYaw();
+
+        // Follower
+        follower = new Follower(hardwareMap);
+        follower.setStartingPose(startPose);
     }
 }

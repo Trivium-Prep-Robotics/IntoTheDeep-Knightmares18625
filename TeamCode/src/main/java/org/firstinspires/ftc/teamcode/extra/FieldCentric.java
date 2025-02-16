@@ -1,7 +1,8 @@
-package org.firstinspires.ftc.teamcode.teleOp;
+package org.firstinspires.ftc.teamcode.extra;
 
 
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -11,6 +12,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 
+@Disabled
 @TeleOp (name = "Field Centric", group = "TELEOP")
 public class FieldCentric extends LinearOpMode {
 
