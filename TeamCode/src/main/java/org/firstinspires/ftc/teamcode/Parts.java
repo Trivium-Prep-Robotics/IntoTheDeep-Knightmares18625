@@ -54,9 +54,9 @@ public class Parts {
     public static double sample;
     public static double specimen;
 
-    public final Pose startPose = new Pose(0,0,0);
+    public final Pose startPose = new Pose(0,0,Math.toRadians(0));
 
-    public static Pose currentPose = new Pose(0,0,0);
+    public static Pose currentPose = new Pose(0,0,Math.toRadians(0));
 
     public Parts(HardwareMap hardwareMap) {
 
