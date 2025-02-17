@@ -27,13 +27,13 @@ public class Parts {
      */
     public static double ticksPerRev = 5281.1;
     public static double pivTPR = 5 * ticksPerRev;
-    public static double slideTPR = 2 * ticksPerRev;
+    public static double slideTPR = 2 / ticksPerRev;
     public static int armLow = (int)(Parts.pivTPR * 0.00);
     public static int armHigh = (int)(Parts.pivTPR * 0.25);
     public static int slideHigh = (int)(Parts.slideTPR * 0.00);
     public static int slideLow = -56000;
 
-    public static int setArm = 0;
+    public static double setArm = 0;
     public static int setSlide = 0;
 
 
@@ -54,7 +54,7 @@ public class Parts {
     public static double sample;
     public static double specimen;
 
-    public final Pose startPose = new Pose(0,0,0);
+    public final Pose tStartPose = new Pose(0,0,0);
 
     public static Pose currentPose = new Pose(0,0,0);
 
@@ -63,8 +63,8 @@ public class Parts {
         // assigning drive train motors
         FR = hardwareMap.get(DcMotor.class, "rightFront");
         FL = hardwareMap.get(DcMotor.class, "leftFront");
-        BR = hardwareMap.get(DcMotor.class, "rightBack");
-        BL = hardwareMap.get(DcMotor.class, "leftBack");
+        BR = hardwareMap.get(DcMotor.class, "rightRear");
+        BL = hardwareMap.get(DcMotor.class, "leftRear");
 
         // reverse left side
         FL.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -90,6 +90,7 @@ public class Parts {
 
         // assigning slides
         slide = hardwareMap.get(DcMotor.class, "slide");
+        slide.setDirection(DcMotorSimple.Direction.REVERSE);
         slide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         slide.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
@@ -116,6 +117,6 @@ public class Parts {
 
         // Follower
         follower = new Follower(hardwareMap);
-        follower.setStartingPose(startPose);
+        follower.setStartingPose(tStartPose);
     }
 }

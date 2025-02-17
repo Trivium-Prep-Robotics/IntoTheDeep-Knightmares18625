@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.auto;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.Parts;
@@ -10,6 +11,7 @@ import org.firstinspires.ftc.teamcode.parts.NewArm;
 import org.firstinspires.ftc.teamcode.parts.StateArm;
 
 @Autonomous (name = "Observation side")
+@Disabled
 public class Observation extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         Parts robot = new Parts(hardwareMap);

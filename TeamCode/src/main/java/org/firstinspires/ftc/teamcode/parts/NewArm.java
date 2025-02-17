@@ -109,7 +109,7 @@ public class NewArm implements Arm{
     }
 
     /* setting the arm ticks */
-    public void setArm(int ticks) {
+    public void setArm(double ticks) {
         Parts.inEncoderA = true;
 
         Parts.setArm = ticks;

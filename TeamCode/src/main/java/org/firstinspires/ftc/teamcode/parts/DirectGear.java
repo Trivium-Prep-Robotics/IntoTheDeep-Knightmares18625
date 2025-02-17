@@ -52,8 +52,8 @@ public class DirectGear implements Arm {
     }
 
 
-    public void setArm(int ticks) {
-        PartsBackUp.setArm = ticks;
+    public void setArm(double ticks) {
+        PartsBackUp.setArm = (int)(ticks);
         PartsBackUp.piv1.setTargetPosition(PartsBackUp.setArm);
         PartsBackUp.piv2.setTargetPosition(PartsBackUp.setArm);
     }

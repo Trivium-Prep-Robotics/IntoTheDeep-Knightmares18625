@@ -14,7 +14,7 @@ public interface Arm {
     public void retract(int sec) throws InterruptedException;
     public void slideStop(boolean stop);
 
-    public void setArm(int ticks);
+    public void setArm(double ticks);
     public void setSlide(int ticks);
 
     public void armLims();

@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.auto;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.Parts;
@@ -9,7 +10,8 @@ import org.firstinspires.ftc.teamcode.parts.GearClaw;
 import org.firstinspires.ftc.teamcode.parts.NewArm;
 import org.firstinspires.ftc.teamcode.parts.StateArm;
 
-@Autonomous (name = "Net side")
+@Autonomous (name = "Net side", group = "AUTO")
+@Disabled
 public class Net extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         Parts robot = new Parts(hardwareMap);
@@ -17,13 +19,13 @@ public class Net extends LinearOpMode {
         GearClaw claw = new GearClaw();
         BasicDrive drive = new BasicDrive();
 
+        claw.openClosePose(0.4, 0.8);
+        claw.sampSpecPose(0.075, 0.6);
+
         claw.grabs();
 
         arm.armPower(1);
         arm.extendPower(1);
-
-        claw.openClosePose(0.4, 0.8);
-        claw.sampSpecPose(0.075, 0.6);
 
         waitForStart();
 

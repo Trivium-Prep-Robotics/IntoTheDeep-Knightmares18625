@@ -97,13 +97,29 @@ public class StateArm implements Arm{
     }
 
     /* setting the arm ticks */
-    public void setArm(int ticks) {
-
+    public void setArm(double ticks) {
+        Parts.piv1.setTargetPosition((int)(ticks * Parts.pivTPR));
+        Parts.piv2.setTargetPosition((int)(ticks * Parts.pivTPR));
+        Parts.piv1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        Parts.piv2.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        Parts.piv1.setPower(Parts.armPower);
+        Parts.piv2.setPower(Parts.armPower);
+        Parts.slide.setPower(Parts.armPower * Parts.armToExtend);
+        while (Parts.piv1.isBusy() && Parts.piv2.isBusy()) {
+        }
+        Parts.piv1.setPower(0);
+        Parts.piv2.setPower(0);
+        Parts.slide.setPower(0);
     }
 
     /* setting the slide ticks */
     public void setSlide(int ticks) {
-
+        Parts.slide.setTargetPosition((int)(ticks * Parts.slideTPR));
+        Parts.slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        Parts.slide.setPower(Parts.extendPower);
+        while (Parts.slide.isBusy()) {
+        }
+        Parts.slide.setPower(0);
     }
 
     /* limit methods for the arm and extention */
