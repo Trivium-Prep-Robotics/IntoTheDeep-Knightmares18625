@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.auto;
 
+import com.acmerobotics.dashboard.config.Config;
 import com.pedropathing.follower.Follower;
 import com.pedropathing.localization.Pose;
 import com.pedropathing.pathgen.BezierCurve;
@@ -18,6 +19,9 @@ import org.firstinspires.ftc.teamcode.parts.GearClaw;
 import org.firstinspires.ftc.teamcode.parts.StateArm;
 import org.firstinspires.ftc.teamcode.util.pedroPathing.constants.FConstants;
 import org.firstinspires.ftc.teamcode.util.pedroPathing.constants.LConstants;
+
+@Config
+@Autonomous(name = "Observation State 2", group = "AUTO")
 public class ObservationState2 extends OpMode {
     private Follower follower;
     Parts robot;
@@ -57,7 +61,7 @@ public class ObservationState2 extends OpMode {
     public static Pose SpecOnePlace = new Pose(38.304, 64.114, Point.CARTESIAN);
 
     public static double highChamber = 0.15;
-    public static int extend = 3;
+    public static int extend = -3;
     public static double pull = 0.14;
     public static double wall = 0.10;
 
@@ -144,41 +148,31 @@ public class ObservationState2 extends OpMode {
         switch (pathState) {
             case 0:
 
-                arm.setArm(highChamber);
-                arm.setSlide(extend);
+//                arm.setArm(highChamber);
+//                arm.setSlide(extend);
 
                 follower.followPath(scorePreload);
+                if (!follower.isBusy()) {
+//                    arm.setArm(pull);
+//                    claw.drops();
+//                    arm.setSlide(0);
+//                    arm.setArm(wall);
 
-                arm.setArm(pull);
-                claw.drops();
-                arm.setSlide(0);
-                arm.setArm(wall);
+                    setPathState(1);
+                }
 
-                setPathState(1);
                 break;
-            case 1:
+            /*case 1:
 
-                /* You could check for
-                - Follower State: "if(!follower.isBusy() {}"
-                - Time: "if(pathTimer.getElapsedTimeSeconds() > 1) {}"
-                - Robot Position: "if(follower.getPose().getX() > 36) {}"
-                */
-
-                /* This case checks the robot's position and will wait until the robot position is close (1 inch away) from the scorePose's position */
                 if(!follower.isBusy()) {
-                    /* Score Preload */
 
-                    /* Since this is a pathChain, we can have Pedro hold the end point while we are grabbing the sample */
                     follower.followPath(push,true);
                     setPathState(2);
                 }
                 break;
             case 2:
-                /* This case checks the robot's position and will wait until the robot position is close (1 inch away) from the pickup1Pose's position */
                 if(!follower.isBusy()) {
-                    /* Grab Sample */
                     claw.grabs();
-                    /* Since this is a pathChain, we can have Pedro hold the end point while we are scoring the sample */
                     follower.followPath(specOne, true);
                     arm.setArm(highChamber);
                     arm.setSlide(extend);
@@ -186,7 +180,7 @@ public class ObservationState2 extends OpMode {
                     claw.drops();
                     arm.setSlide(0);
                 }
-                break;
+                break;*/
         }
     }
 

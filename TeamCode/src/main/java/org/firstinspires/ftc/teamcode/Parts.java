@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.pedropathing.follower.Follower;
 import com.pedropathing.localization.Pose;
+import com.pedropathing.util.Constants;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -10,6 +11,9 @@ import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.ServoImplEx;
 
+import org.firstinspires.ftc.teamcode.util.pedroPathing.constants.FConstants;
+import org.firstinspires.ftc.teamcode.util.pedroPathing.constants.LConstants;
+
 public class Parts {
 
     // declaring parts
@@ -17,7 +21,7 @@ public class Parts {
     public static DcMotor piv1, piv2, arm;
     public static DcMotor slide;
     public static Servo claw, wrist;
-    public static Follower follower;
+
 
     public static IMU imu;
     IMU.Parameters myIMUparameters;
@@ -27,7 +31,7 @@ public class Parts {
      */
     public static double ticksPerRev = 5281.1;
     public static double pivTPR = 5 * ticksPerRev;
-    public static double slideTPR = 2 / ticksPerRev;
+    public static double slideTPR = ticksPerRev / 2;
     public static int armLow = (int)(Parts.pivTPR * 0.00);
     public static int armHigh = (int)(Parts.pivTPR * 0.25);
     public static int slideHigh = (int)(Parts.slideTPR * 0.00);
@@ -90,7 +94,6 @@ public class Parts {
 
         // assigning slides
         slide = hardwareMap.get(DcMotor.class, "slide");
-        slide.setDirection(DcMotorSimple.Direction.REVERSE);
         slide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         slide.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
@@ -114,9 +117,5 @@ public class Parts {
         );
         imu.initialize(myIMUparameters);
         imu.resetYaw();
-
-        // Follower
-        follower = new Follower(hardwareMap);
-        follower.setStartingPose(tStartPose);
     }
 }

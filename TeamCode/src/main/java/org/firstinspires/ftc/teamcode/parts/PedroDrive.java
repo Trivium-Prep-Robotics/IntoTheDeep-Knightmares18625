@@ -35,12 +35,12 @@ public class PedroDrive implements Drive {
     }
 
     public void feildCentric(Gamepad gamepad) {
-        Parts.follower.setTeleOpMovementVectors(-gamepad.left_stick_y, -gamepad.left_stick_x, -gamepad.right_stick_x, false);
-        Parts.follower.update();
+        /*follower.setTeleOpMovementVectors(-gamepad.left_stick_y, -gamepad.left_stick_x, -gamepad.right_stick_x, false);
+        follower.update();
 
         /* Telemetry Outputs of our Follower */
-        telemetry.addData("X", Parts.follower.getPose().getX());
+        /*telemetry.addData("X", Parts.follower.getPose().getX());
         telemetry.addData("Y", Parts.follower.getPose().getY());
-        telemetry.addData("Heading in Degrees", Math.toDegrees(Parts.follower.getPose().getHeading()));
+        telemetry.addData("Heading in Degrees", Math.toDegrees(Parts.follower.getPose().getHeading()));*/
     }
 }
