@@ -11,7 +11,7 @@ import org.firstinspires.ftc.teamcode.parts.NewArm;
 import org.firstinspires.ftc.teamcode.parts.StateArm;
 
 @Autonomous (name = "Observation side")
-@Disabled
+//@Disabled
 public class Observation extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         Parts robot = new Parts(hardwareMap);

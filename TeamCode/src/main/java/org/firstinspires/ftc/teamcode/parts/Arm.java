@@ -15,7 +15,7 @@ public interface Arm {
     public void slideStop(boolean stop);
 
     public void setArm(double ticks);
-    public void setSlide(int ticks);
+    public void setSlide(double ticks);
 
     public void armLims();
     public void slideLims();

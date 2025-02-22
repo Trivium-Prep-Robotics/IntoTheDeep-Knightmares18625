@@ -116,7 +116,7 @@ public class NewArm implements Arm{
     }
 
     /* setting the slide ticks */
-    public void setSlide(int ticks) {
+    public void setSlide(double ticks) {
         Parts.inEncoderS = true;
 
         Parts.setSlide = (int)(ticks + Parts.slideTicksZero);

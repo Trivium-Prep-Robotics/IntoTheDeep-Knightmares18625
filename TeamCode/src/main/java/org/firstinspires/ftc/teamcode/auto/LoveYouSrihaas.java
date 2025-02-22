@@ -23,14 +23,14 @@ public class LoveYouSrihaas extends LinearOpMode {
     private Follower follower;
     private Timer pathTimer, actionTimer, opmodeTimer;
     public static final Pose startPose = new Pose(5.000, 63.00, Math.toRadians(0));
-    public static final Pose scorePose = new Pose(39.000, 63.00, Math.toRadians(0));
+    public static final Pose scorePose = new Pose(40, 63.00, Math.toRadians(0));
 
     public static double highChamber = 0.20;
-    public static int extend = -1;
-    public static double pull = 0.16;
-    public static double wall = 0.10;
+    public static double extend = -1.2;
+    public static double pull = 0.14;
+    public static double wall = 0.09;
 
-    private Path scorePreload, back, grabOne, specOne, turnAgain;
+    private Path scorePreload, back, grabOne, specOne, turnAgain, forward;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -65,15 +65,21 @@ public class LoveYouSrihaas extends LinearOpMode {
         }
 
         arm.setArm(pull);
+        /*follower.followPath(forward);
+        while (follower.isBusy()) {
+            follower.update();
+        }*/
         claw.drops();
-        arm.setSlide(0);
-        arm.setArm(wall);
+        sleep(1000);
         claw.specimen();
 
         follower.followPath(back);
         while (follower.isBusy()) {
             follower.update();
         }
+
+        arm.setArm(wall);
+        arm.setSlide(0);
 
         follower.followPath(grabOne);
         while (follower.isBusy()) {
@@ -99,7 +105,7 @@ public class LoveYouSrihaas extends LinearOpMode {
         arm.setArm(pull);
         claw.drops();
         arm.setSlide(0);
-        arm.setArm(0);
+        arm.setSlide(0);
 
 
     }
@@ -108,10 +114,13 @@ public class LoveYouSrihaas extends LinearOpMode {
         scorePreload = new Path(new BezierLine(new Point(startPose), new Point(scorePose)));
         scorePreload.setConstantHeadingInterpolation(Math.toRadians(0));
 
+        forward = new Path(new BezierLine(new Point(scorePose), new Point(41, 63, Point.CARTESIAN)));
+        forward.setConstantHeadingInterpolation(Math.toRadians(0));
+
         back = new Path(new BezierLine(new Point(scorePose), new Point(30, 63, Point.CARTESIAN)));
         back.setConstantHeadingInterpolation(Math.toRadians(0));
 
-        grabOne = new Path(new BezierLine(new Point(30, 63, Point.CARTESIAN), new Point(8.000, 5.000, Point.CARTESIAN)));
+        grabOne = new Path(new BezierLine(new Point(30, 63, Point.CARTESIAN), new Point(0,-2, Point.CARTESIAN)));
         grabOne.setLinearHeadingInterpolation(Math.toRadians(0), Math.toRadians(-90));
 
         turnAgain = new Path(new BezierLine(new Point(35.000, 23.000, Point.CARTESIAN), new Point(20.000, 23.000, Point.CARTESIAN)));
