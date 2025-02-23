@@ -23,14 +23,14 @@ public class LoveYouSrihaas extends LinearOpMode {
     private Follower follower;
     private Timer pathTimer, actionTimer, opmodeTimer;
     public static final Pose startPose = new Pose(5.000, 63.00, Math.toRadians(0));
-    public static final Pose scorePose = new Pose(40, 63.00, Math.toRadians(0));
+    public static final Pose scorePose = new Pose(39.5, 63.00, Math.toRadians(0));
 
     public static double highChamber = 0.20;
     public static double extend = -1.2;
-    public static double pull = 0.14;
-    public static double wall = 0.09;
+    public static double pull = 0.13;
+    public static double wall = 0.093;
 
-    private Path scorePreload, back, grabOne, specOne, turnAgain, forward;
+    private Path scorePreload, back, grabOne, specOne, turnAgain, forward, park;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -104,6 +104,14 @@ public class LoveYouSrihaas extends LinearOpMode {
 
         arm.setArm(pull);
         claw.drops();
+        follower.followPath(back);
+        while (follower.isBusy()) {
+            follower.update();
+        }
+        follower.followPath(park);
+        while (follower.isBusy()) {
+            follower.update();
+        }
         arm.setSlide(0);
         arm.setSlide(0);
 
@@ -128,5 +136,8 @@ public class LoveYouSrihaas extends LinearOpMode {
 
         specOne = new Path(new BezierLine(new Point(15.000, 23.000, Point.CARTESIAN), new Point(scorePose)));
         specOne.setConstantHeadingInterpolation(Math.toRadians(0));
+
+        park = new Path(new BezierLine(new Point(scorePose), new Point(0, .2)));
+        park.setConstantHeadingInterpolation(Math.toRadians(0));
     }
 }
