@@ -11,7 +11,7 @@ import org.firstinspires.ftc.teamcode.parts.NewArm;
 import org.firstinspires.ftc.teamcode.parts.StateArm;
 
 @Autonomous (name = "Net side", group = "AUTO")
-@Disabled
+//@Disabled
 public class Net extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         Parts robot = new Parts(hardwareMap);

@@ -113,7 +113,7 @@ public class StateArm implements Arm{
     }
 
     /* setting the slide ticks */
-    public void setSlide(int ticks) {
+    public void setSlide(double ticks) {
         Parts.slide.setTargetPosition((int)(ticks * Parts.slideTPR));
         Parts.slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         Parts.slide.setPower(Parts.extendPower);
