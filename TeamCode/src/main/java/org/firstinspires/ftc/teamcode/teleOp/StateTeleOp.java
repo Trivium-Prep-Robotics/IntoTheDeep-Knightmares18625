@@ -13,6 +13,10 @@ import org.firstinspires.ftc.teamcode.parts.StateArm;
 import org.firstinspires.ftc.teamcode.util.pedroPathing.constants.FConstants;
 import org.firstinspires.ftc.teamcode.util.pedroPathing.constants.LConstants;
 
+/**
+ * Actually not used, but it's the same as our other teleOp it just uses the pedro pathing stuff for the drive
+ */
+
 @TeleOp (name = "State TeleOp", group = "TELEOP")
 public class StateTeleOp extends LinearOpMode {
     private static Follower follower;

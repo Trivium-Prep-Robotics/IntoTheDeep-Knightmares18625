@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
-@Autonomous(name = "lefto", group = "AUTO")
+@Autonomous(name = "lefto", group = "extra")
 @Disabled
 public class Lefto extends LinearOpMode {
     DcMotor FR, FL, BR, BL;

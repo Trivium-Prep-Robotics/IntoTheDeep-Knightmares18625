@@ -10,17 +10,19 @@ import org.firstinspires.ftc.teamcode.parts.BasicDrive;
 import org.firstinspires.ftc.teamcode.parts.GearClaw;
 import org.firstinspires.ftc.teamcode.parts.StateArm;
 
+
+/**
+ * TeleOp used from qual 2 to State
+ */
 @TeleOp (name = "teleOp", group = "TELEOP")
 public class teleOp extends LinearOpMode {
 
 
     public void runOpMode() throws InterruptedException {
-
-        // all the used classes
-        Parts robot = new Parts(hardwareMap);
-        StateArm arm = new StateArm();
-        GearClaw claw = new GearClaw();
-        BasicDrive drive = new BasicDrive();
+        Parts robot = new Parts(hardwareMap); // configure robot
+        StateArm arm = new StateArm(); // arm class
+        GearClaw claw = new GearClaw(); // claw class
+        BasicDrive drive = new BasicDrive(); // drive class
 
         waitForStart(); // initialize
 
@@ -30,13 +32,11 @@ public class teleOp extends LinearOpMode {
         Parts.piv2.setTargetPosition(0);
 
         // set the power used for arm motors to 1
-        arm.armPower(1);
-        arm.extendPower(1);
+        arm.armPower(1); // set arm power
+        arm.extendPower(1); // set extend power
 
-        // set claw open and close positions
-        //claw.openClosePose(0.35, 0.5);
-        claw.openClosePose(0.375, 0.8); // I'm never letting jacob r touch this code again
-        claw.sampSpecPose(0.2, 0.4);
+        claw.openClosePose(0.4, 0.8); // set claw positions
+        claw.sampSpecPose(0.075, 0.6); // set wrist positions
 
         while (opModeIsActive()) {
 

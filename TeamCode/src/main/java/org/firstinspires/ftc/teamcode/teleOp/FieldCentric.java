@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.extra;
+package org.firstinspires.ftc.teamcode.teleOp;
 
 
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
@@ -12,8 +12,14 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 
+/**
+ * TeleOp used at qual 1
+ *
+ * field centric drive
+ * crappy attempt at steadying a weak arm lol
+ */
 @Disabled
-@TeleOp (name = "Field Centric", group = "TELEOP")
+@TeleOp (name = "Old", group = "old TeleOp")
 public class FieldCentric extends LinearOpMode {
 
     DcMotor FR, FL, BR, BL, arm, slide;

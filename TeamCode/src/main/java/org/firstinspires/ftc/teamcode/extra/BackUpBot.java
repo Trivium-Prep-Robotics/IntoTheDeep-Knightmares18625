@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.parts.BasicDrive;
 import org.firstinspires.ftc.teamcode.parts.DirectGear;
 import org.firstinspires.ftc.teamcode.parts.GearClaw;
 
-@TeleOp (name = "Direct Gear Bot")
+@TeleOp (name = "Direct Gear Bot", group = "extra")
 @Disabled
 
 public class BackUpBot extends LinearOpMode {

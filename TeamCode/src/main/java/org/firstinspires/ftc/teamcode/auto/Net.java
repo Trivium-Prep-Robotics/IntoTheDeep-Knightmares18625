@@ -10,22 +10,27 @@ import org.firstinspires.ftc.teamcode.parts.GearClaw;
 import org.firstinspires.ftc.teamcode.parts.NewArm;
 import org.firstinspires.ftc.teamcode.parts.StateArm;
 
-@Autonomous (name = "Net side", group = "AUTO")
+/**
+ * This Auto that simply moves the robot to forward to place the pre-load specimen then back to the start (net side)
+ * Used in the last qual competition
+ */
+
+@Autonomous (name = "Net side", group = "old Auto")
 //@Disabled
 public class Net extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
-        Parts robot = new Parts(hardwareMap);
-        StateArm arm = new StateArm();
-        GearClaw claw = new GearClaw();
-        BasicDrive drive = new BasicDrive();
+        Parts robot = new Parts(hardwareMap); // configure robot
+        StateArm arm = new StateArm(); // arm class
+        GearClaw claw = new GearClaw(); // claw class
+        BasicDrive drive = new BasicDrive(); // drive class
 
-        claw.openClosePose(0.4, 0.8);
-        claw.sampSpecPose(0.075, 0.6);
+        claw.openClosePose(0.4, 0.8); // set claw positions
+        claw.sampSpecPose(0.075, 0.6); // set wrist positions
 
         claw.grabs();
 
-        arm.armPower(1);
-        arm.extendPower(1);
+        arm.armPower(1); // set arm power
+        arm.extendPower(1); // set extend power
 
         waitForStart();
 

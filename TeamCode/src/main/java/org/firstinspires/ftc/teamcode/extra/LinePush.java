@@ -1,14 +1,13 @@
-package org.firstinspires.ftc.teamcode.auto;
+package org.firstinspires.ftc.teamcode.extra;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.pedropathing.follower.Follower;
-import com.pedropathing.pathgen.BezierCurve;
 import com.pedropathing.pathgen.Path;
-import com.pedropathing.pathgen.PathBuilder;
 import com.pedropathing.pathgen.PathChain;
 import com.pedropathing.util.Constants;
 import com.pedropathing.util.Timer;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.Parts;
@@ -22,8 +21,9 @@ import com.pedropathing.pathgen.BezierLine;
 import com.pedropathing.pathgen.Point;
 
 @Config
-@Autonomous(name = "Observation State", group = "AUTO")
-public class ObservationState extends LinearOpMode {
+@Autonomous(name = "Push with line paths", group = "extra")
+@Disabled
+public class LinePush extends LinearOpMode {
     private Follower follower;
     private Timer pathTimer, actionTimer, opmodeTimer;
     public static final Pose startPose = new Pose(8.000, 63.00, Math.toRadians(0));
