@@ -1,18 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     xmlns:tools="http://schemas.android.com/tools"
     android:versionCode="57"
     android:versionName="10.1.1">
+=======
+          xmlns:tools="http://schemas.android.com/tools"
+    android:versionCode="58"
+          android:versionName="10.2">
+>>>>>>> upstream/master
 
   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
   <application
+<<<<<<< HEAD
       android:allowBackup="true"
       android:largeHeap="true"
       android:icon="@drawable/ic_launcher"
       android:label="@string/app_name"
       android:theme="@style/AppThemeRedRC"
       android:usesCleartextTraffic="true">
+=======
+    android:allowBackup="true"
+    android:largeHeap="true"
+    android:icon="@drawable/ic_launcher"
+    android:label="@string/app_name"
+    android:theme="@style/AppThemeRedRC"
+    android:usesCleartextTraffic="true">
+>>>>>>> upstream/master
 
     <!-- Indicates to the ControlHubUpdater what the latest version of the Control Hub is that this app supports -->
     <meta-data
@@ -21,10 +36,17 @@
 
     <!-- The main robot controller activity -->
     <activity android:name="org.firstinspires.ftc.robotcontroller.internal.PermissionValidatorWrapper"
+<<<<<<< HEAD
         android:screenOrientation="fullUser"
         android:configChanges="orientation|screenSize"
         android:label="@string/app_name"
         android:launchMode="singleTask" >
+=======
+              android:screenOrientation="fullUser"
+              android:configChanges="orientation|screenSize"
+              android:label="@string/app_name"
+              android:launchMode="singleTask" >
+>>>>>>> upstream/master
 
       <intent-filter>
         <category android:name="android.intent.category.LAUNCHER" />
@@ -34,19 +56,32 @@
     </activity>
 
     <activity
+<<<<<<< HEAD
         android:name="org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity"
         android:screenOrientation="fullUser"
         android:configChanges="orientation|screenSize"
         android:label="@string/app_name"
         android:launchMode="singleTask" >
+=======
+      android:name="org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity"
+      android:screenOrientation="fullUser"
+      android:configChanges="orientation|screenSize"
+      android:label="@string/app_name"
+      android:launchMode="singleTask" >
+>>>>>>> upstream/master
 
       <intent-filter>
         <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
       </intent-filter>
 
       <meta-data
+<<<<<<< HEAD
           android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
           android:resource="@xml/device_filter" />
+=======
+        android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+        android:resource="@xml/device_filter" />
+>>>>>>> upstream/master
 
       <!--org.firstinspires.main.entry indicates that this app is compatible with the Dragonboard Control Hub-->
       <meta-data
@@ -56,16 +91,28 @@
 
     <!-- The robot controller service in which most of the robot functionality is managed -->
     <service
+<<<<<<< HEAD
         android:name="com.qualcomm.ftccommon.FtcRobotControllerService"
         android:enabled="true" />
+=======
+      android:name="com.qualcomm.ftccommon.FtcRobotControllerService"
+      android:enabled="true" />
+>>>>>>> upstream/master
 
 
     <!-- Assistant that autostarts the robot controller on android boot (if it's supposed to) -->
     <receiver
+<<<<<<< HEAD
         android:enabled="true"
         android:exported="true"
         android:name="org.firstinspires.ftc.ftccommon.internal.RunOnBoot"
         android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+=======
+      android:enabled="true"
+      android:exported="true"
+      android:name="org.firstinspires.ftc.ftccommon.internal.RunOnBoot"
+      android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+>>>>>>> upstream/master
 
       <intent-filter>
         <category android:name="android.intent.category.DEFAULT" />
