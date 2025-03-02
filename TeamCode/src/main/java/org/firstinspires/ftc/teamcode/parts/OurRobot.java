@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.parts;
 
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
@@ -9,202 +10,180 @@ public class OurRobot implements Arm, Claw, Drive {
     /**
      * ARM SECTION
      */
+    /* Set the arm power used */
     public void armPower(double power) {
-        /*
-        Set power variable
-         */
+        Parts.armPower = power;
     }
 
+    /* Set the extend power used */
     public void extendPower(double power) {
-        /*
-        Set power variable
-         */
+        Parts.extendPower = power;
     }
 
+    /* up movement methods for the arm */
     public void up(boolean move) {
         if (move) {
-            /*
-            Move parameter is for the button used
-            Code to move arm up
-            */
+            Parts.piv1.setPower(Parts.armPower);
+            Parts.piv2.setPower(Parts.armPower);
+            Parts.slide.setPower(Parts.armPower * Parts.armToExtend);
         }
     }
 
     public void up(int sec) throws InterruptedException{
-        /*
-        Code to move arm up in auto
-        Ours uses a "second" parameter for seconds running, but change if you need for something different
-        (Keep in mind you might have to change the interface for this)
-         */
+        Parts.piv1.setPower(Parts.armPower);
+        Parts.piv2.setPower(Parts.armPower);
+        Parts.slide.setPower(Parts.armPower * Parts.armToExtend);
+        Thread.sleep(sec);
+        Parts.piv1.setPower(0);
+        Parts.piv2.setPower(0);
+        Parts.slide.setPower(0);
     }
 
+    /* down movement methods for the arm */
     public void down(boolean move) {
         if (move) {
-            /*
-            Move parameter is for the button used
-            Code to move arm down
-            */
+            Parts.piv1.setPower(-Parts.armPower);
+            Parts.piv2.setPower(-Parts.armPower);
+            Parts.slide.setPower(-Parts.armPower * Parts.armToExtend);
         }
     }
 
     public void down(int sec) throws InterruptedException{
-        /*
-        Code to move arm down in auto
-        Ours uses a "second" parameter for seconds running, but change if you need for something different
-        (Keep in mind you might have to change the interface for this)
-         */
+        Parts.piv1.setPower(-Parts.armPower);
+        Parts.piv2.setPower(-Parts.armPower);
+        Parts.slide.setPower(-Parts.armPower * Parts.armToExtend);
+        Thread.sleep(sec);
+        Parts.piv1.setPower(0);
+        Parts.piv2.setPower(0);
+        Parts.slide.setPower(0);
     }
 
+    /* method to check to stop the arm */
     public void armStop(boolean stop) {
         if (stop) {
-            /*
-            Code to stop
-            the parameter is the condition to stop
-            */
+            Parts.piv1.setPower(0);
+            Parts.piv2.setPower(0);
         }
     }
 
+    /* extend movement methods for the arm */
     public void extend(double power) {
         if (power != 0) {
-            /*
-            Move parameter is for the button used
-            Code to extend arm
-             */
+            Parts.inEncoderS = false;
+            Parts.slide.setPower(-Parts.extendPower);
         }
     }
 
     public void extend(int sec) throws InterruptedException{
-        /*
-        Code to extend arm in auto
-        Ours uses a "second" parameter for seconds running, but change if you need for something different
-        (Keep in mind you might have to change the interface for this)
-         */
+        Parts.slide.setPower(-Parts.extendPower);
+        Thread.sleep(sec);
+        Parts.slide.setPower(0);
     }
 
+    /* retract movement methods for the arm */
     public void retract(double power) {
         if (power != 0) {
-            /*
-            Move parameter is for the button used
-            Code to retract arm
-            */
+            Parts.inEncoderS = false;
+            Parts.slide.setPower(Parts.extendPower);
         }
     }
 
     public void retract(int sec) throws InterruptedException{
-        /*
-        Code to retract arm in auto
-        Ours uses a "second" parameter for seconds running, but change if you need for something different
-        (Keep in mind you might have to change the interface for this)
-         */
+        Parts.slide.setPower(Parts.extendPower);
+        Thread.sleep(sec);
+        Parts.slide.setPower(0);
     }
 
+    /* method to stop the extention */
     public void slideStop(boolean stop) {
         if (stop) {
-            /*
-            Code to stop
-            the parameter is the condition to stop
-            */
+            Parts.slide.setPower(0);
         }
     }
 
+    /* setting the arm ticks */
     public void setArm(double ticks) {
-        /*
-        Code to assign the target position of arm
-         */
+        Parts.piv1.setTargetPosition((int)(ticks * Parts.pivTPR));
+        Parts.piv2.setTargetPosition((int)(ticks * Parts.pivTPR));
+        Parts.piv1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        Parts.piv2.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        Parts.piv1.setPower(Parts.armPower);
+        Parts.piv2.setPower(Parts.armPower);
+        Parts.slide.setPower(Parts.armPower * Parts.armToExtend);
+        while (Parts.piv1.isBusy() && Parts.piv2.isBusy()) {
+        }
+        Parts.piv1.setPower(0);
+        Parts.piv2.setPower(0);
+        Parts.slide.setPower(0);
     }
 
+    /* setting the slide ticks */
     public void setSlide(double ticks) {
-        /*
-        Code to assign the target position of slides
-         */
+        Parts.slide.setTargetPosition((int)(ticks * Parts.slideTPR));
+        Parts.slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        Parts.slide.setPower(Parts.extendPower);
+        while (Parts.slide.isBusy()) {
+        }
+        Parts.slide.setPower(0);
     }
 
+    /* limit methods for the arm and extention */
     public void armLims() {
-        /*
-        Code for arm limits
-         */
+
     }
 
     public void slideLims() {
-        /*
-        code for slide limits
-         */
+
     }
 
+    /* methods to start encoders */
     public void armGo() {
-        /*
-        Tell arm to go to target position
-         */
+
     }
 
     public void slideGo() {
-        /*
-        Tell slide to go to target position
-         */
+
     }
 
 
     /**
      * CLAW SECTION
      */
+    // setting the open and close positions for the claw
     public void openClosePose(double open, double close) {
-        /*
-        Set position variable
-         */
+        Parts.openClaw = open;
+        Parts.closeClaw = close;
     }
 
+    // grab methods for claw
     public void grabs(boolean move) {
-        /*
-        Code for grabbing in teleOp. Parameter is for the button used
-         */
+        if (move) { Parts.claw.setPosition(Parts.closeClaw); }
     }
+    public void grabs() { Parts.claw.setPosition(Parts.closeClaw); }
 
-    public void grabs() {
-        /*
-        Code for grabbing in auto
-         */
-    }
-
+    // drop methods for claw
     public void drops(boolean move) {
-        /*
-        Code for dropping in teleOp. Parameter is for the button used
-         */
+        if (move) { Parts.claw.setPosition(Parts.openClaw); }
     }
-    public void drops() {
-        /*
-        Code for grabbing in auto
-         */
-    }
+    public void drops() { Parts.claw.setPosition(Parts.openClaw); }
 
+    // setting the sample and specimen positions for the claw
     public void sampSpecPose(double sample, double specimen) {
-        /*
-        Set wrist position variable
-         */
+        Parts.sample = sample;
+        Parts.specimen = specimen;
     }
 
+    // sample methods for claw
     public void sample(boolean move) {
-        /*
-        Code for setting to sample position in teleOp. Parameter is for the button used
-         */
+        if (move) { Parts.wrist.setPosition(Parts.sample); }
     }
+    public void sample() { Parts.wrist.setPosition(Parts.sample); }
 
-    public void sample() {
-        /*
-        Code for setting to sample position in auto
-         */
-    }
-
+    // specimen methods for claw
     public void specimen(boolean move) {
-        /*
-        Code for setting to specimen position in teleOp. Parameter is for the button used
-         */
+        if (move) { Parts.wrist.setPosition(Parts.specimen); }
     }
-
-    public void specimen() {
-        /*
-        Code for setting to specimen position in auto
-         */
-    }
+    public void specimen() { Parts.wrist.setPosition(Parts.specimen); }
 
 
     /**

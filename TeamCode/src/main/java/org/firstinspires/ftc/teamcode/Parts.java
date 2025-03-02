@@ -57,6 +57,8 @@ public class Parts {
 
     public static double sample;
     public static double specimen;
+    public static double driveMaxSpd = 1;
+    public static double driveSlwSpd = 0.5;
 
     public final Pose tStartPose = new Pose(0,0,Math.toRadians(0));
 
