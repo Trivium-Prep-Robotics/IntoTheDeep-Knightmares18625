@@ -25,7 +25,6 @@ public class StateTeleOp extends LinearOpMode {
         Parts robot = new Parts(hardwareMap);
         StateArm arm = new StateArm();
         GearClaw claw = new GearClaw();
-        PedroDrive drive = new PedroDrive();
 
         Constants.setConstants(FConstants.class, LConstants.class);
         follower = new Follower(hardwareMap);
