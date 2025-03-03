@@ -7,8 +7,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Parts;
-import org.firstinspires.ftc.teamcode.parts.GearClaw;
-import org.firstinspires.ftc.teamcode.parts.StateArm;
+import org.firstinspires.ftc.teamcode.parts.OurRobot;
 import org.firstinspires.ftc.teamcode.util.pedroPathing.constants.FConstants;
 import org.firstinspires.ftc.teamcode.util.pedroPathing.constants.LConstants;
 
@@ -23,8 +22,7 @@ public class StateTeleOp extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         // all the used classes
         Parts robot = new Parts(hardwareMap);
-        StateArm arm = new StateArm();
-        GearClaw claw = new GearClaw();
+        OurRobot bot = new OurRobot();
 
         Constants.setConstants(FConstants.class, LConstants.class);
         follower = new Follower(hardwareMap);
@@ -39,33 +37,33 @@ public class StateTeleOp extends LinearOpMode {
         Parts.piv2.setTargetPosition(0);
 
         // set the power used for arm motors to 1
-        arm.armPower(1);
-        arm.extendPower(1);
+        bot.armPower(1);
+        bot.extendPower(1);
 
         // set claw open and close positions
         //claw.openClosePose(0.35, 0.5);
-        claw.openClosePose(0.375, 0.8); // I'm never letting jacob r touch this code again
-        claw.sampSpecPose(0.2, 0.4);
+        bot.openClosePose(0.375, 0.8); // I'm never letting jacob r touch this code again
+        bot.sampSpecPose(0.2, 0.4);
 
         while (opModeIsActive()) {
 
             // arm controls
-            arm.up(gamepad2.dpad_up);
-            arm.down(gamepad2.dpad_down);
-            arm.armStop(!(gamepad2.dpad_up || gamepad2.dpad_down));
+            bot.up(gamepad2.dpad_up);
+            bot.down(gamepad2.dpad_down);
+            bot.armStop(!(gamepad2.dpad_up || gamepad2.dpad_down));
 
             // extend controls
-            arm.extend(gamepad2.right_trigger);
-            arm.retract(gamepad2.left_trigger);
-            arm.slideStop((gamepad2.left_trigger == 0 && gamepad2.right_trigger == 0 && !gamepad2.dpad_up && !gamepad2.dpad_down));
+            bot.extend(gamepad2.right_trigger);
+            bot.retract(gamepad2.left_trigger);
+            bot.slideStop((gamepad2.left_trigger == 0 && gamepad2.right_trigger == 0 && !gamepad2.dpad_up && !gamepad2.dpad_down));
 
             // claw controls
-            claw.grabs(gamepad2.right_bumper);
-            claw.drops(gamepad2.left_bumper);
+            bot.grabs(gamepad2.right_bumper);
+            bot.drops(gamepad2.left_bumper);
 
             // wrist controls
-            claw.specimen(gamepad2.y);
-            claw.sample(gamepad2.a);
+            bot.specimen(gamepad2.y);
+            bot.sample(gamepad2.a);
 
             // drive controls
 //            drive.feildCentric(gamepad1);
