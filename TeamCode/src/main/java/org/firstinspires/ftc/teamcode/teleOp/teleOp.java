@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Parts;
-import org.firstinspires.ftc.teamcode.parts.OurRobot;
+import org.firstinspires.ftc.teamcode.util.OurRobot;
 
 
 /**
@@ -15,8 +15,8 @@ public class teleOp extends LinearOpMode {
 
 
     public void runOpMode() throws InterruptedException {
-        Parts robot = new Parts(hardwareMap); // configure robot
-        OurRobot bot = new OurRobot();
+        Parts config = new Parts(hardwareMap); // configure robot
+        OurRobot robot = new OurRobot();
 
         waitForStart(); // initialize
 
@@ -26,34 +26,34 @@ public class teleOp extends LinearOpMode {
         Parts.piv2.setTargetPosition(0);
 
         // set the power used for arm motors to 1
-        bot.armPower(1); // set arm power
-        bot.extendPower(1); // set extend power
+        robot.armPower(1); // set arm power
+        robot.extendPower(1); // set extend power
 
-        bot.openClosePose(0.4, 0.8); // set claw positions
-        bot.sampSpecPose(0.075, 0.6); // set wrist positions
+        robot.openClosePose(0.4, 0.8); // set claw positions
+        robot.sampSpecPose(0.075, 0.6); // set wrist positions
 
         while (opModeIsActive()) {
 
             // arm controls
-            bot.up(gamepad2.dpad_up);
-            bot.down(gamepad2.dpad_down);
-            bot.armStop(!(gamepad2.dpad_up || gamepad2.dpad_down));
+            robot.up(gamepad2.dpad_up);
+            robot.down(gamepad2.dpad_down);
+            robot.armStop(!(gamepad2.dpad_up || gamepad2.dpad_down));
 
             // extend controls
-            bot.extend(gamepad2.right_trigger);
-            bot.retract(gamepad2.left_trigger);
-            bot.slideStop((gamepad2.left_trigger == 0 && gamepad2.right_trigger == 0 && !gamepad2.dpad_up && !gamepad2.dpad_down));
+            robot.extend(gamepad2.right_trigger);
+            robot.retract(gamepad2.left_trigger);
+            robot.slideStop((gamepad2.left_trigger == 0 && gamepad2.right_trigger == 0 && !gamepad2.dpad_up && !gamepad2.dpad_down));
 
             // claw controls
-            bot.grabs(gamepad2.right_bumper);
-            bot.drops(gamepad2.left_bumper);
+            robot.grabs(gamepad2.right_bumper);
+            robot.drops(gamepad2.left_bumper);
 
             // wrist controls
-            bot.specimen(gamepad2.y);
-            bot.sample(gamepad2.a);
+            robot.specimen(gamepad2.y);
+            robot.sample(gamepad2.a);
 
             // drive train controls
-            bot.feildCentric(gamepad1);
+            robot.feildCentric(gamepad1);
 
 
             // update every loop

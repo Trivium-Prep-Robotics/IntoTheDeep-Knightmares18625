@@ -12,6 +12,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.Parts;
+import org.firstinspires.ftc.teamcode.util.OurRobot;
 import org.firstinspires.ftc.teamcode.util.pedroPathing.constants.FConstants;
 import org.firstinspires.ftc.teamcode.util.pedroPathing.constants.LConstants;
 
@@ -47,9 +48,8 @@ public class StateAuto extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        Parts robot = new Parts(hardwareMap); // configure robot
-        StateArm arm = new StateArm(); // arm class
-        GearClaw claw = new GearClaw(); // claw class
+        Parts config = new Parts(hardwareMap); // configure robot
+        OurRobot robot = new OurRobot();
 
 
         // Pedro Pathing init
@@ -58,20 +58,20 @@ public class StateAuto extends LinearOpMode {
         follower.setStartingPose(startPose);
         buildPaths();
 
-        claw.openClosePose(0.4, 0.8); // set claw positions
-        claw.sampSpecPose(0.075, 0.6); // set wrist positions
+        robot.openClosePose(0.4, 0.8); // set claw positions
+        robot.sampSpecPose(0.075, 0.6); // set wrist positions
 
-        arm.armPower(1); // set arm power
-        arm.extendPower(1); // set extend power
+        robot.armPower(1); // set arm power
+        robot.extendPower(1); // set extend power
 
-        claw.grabs();
-        claw.specimen();
+        robot.grabs();
+        robot.specimen();
 
         waitForStart();
 
         // ready the arm to place
-        arm.setArm(highChamber);
-        arm.setSlide(extend);
+        robot.setArm(highChamber);
+        robot.setSlide(extend);
 
         // move to chamber
         follower.followPath(scorePreload);
@@ -80,10 +80,10 @@ public class StateAuto extends LinearOpMode {
         }
 
         // place specimen
-        arm.setArm(pull);
-        claw.drops();
+        robot.setArm(pull);
+        robot.drops();
         sleep(1000);
-        claw.specimen();
+        robot.specimen();
 
         // back up a little
         follower.followPath(back);
@@ -92,8 +92,8 @@ public class StateAuto extends LinearOpMode {
         }
 
         // set arm to grab from wall
-        arm.setArm(wall);
-        arm.setSlide(0);
+        robot.setArm(wall);
+        robot.setSlide(0);
 
         // go to wall
         follower.followPath(grabOne);
@@ -102,12 +102,12 @@ public class StateAuto extends LinearOpMode {
         }
 
         // grab specimen
-        claw.grabs();
+        robot.grabs();
         sleep(1000);
 
         // ready arm for scoring
-        arm.setArm(highChamber);
-        arm.setSlide(extend);
+        robot.setArm(highChamber);
+        robot.setSlide(extend);
 
         // turn to score rotation
         follower.followPath(turnAgain);
@@ -123,8 +123,8 @@ public class StateAuto extends LinearOpMode {
 
 
         // place specimen
-        arm.setArm(pull);
-        claw.drops();
+        robot.setArm(pull);
+        robot.drops();
 
         // back up a little
         follower.followPath(back);
@@ -138,8 +138,8 @@ public class StateAuto extends LinearOpMode {
         }
 
         // reset arm and slide
-        arm.setSlide(0);
-        arm.setSlide(0);
+        robot.setSlide(0);
+        robot.setSlide(0);
 
 
     }

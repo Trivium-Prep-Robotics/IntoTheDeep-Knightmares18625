@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.parts;
+package org.firstinspires.ftc.teamcode.util;
 
 public interface Claw {
     // setting the open and closed position
