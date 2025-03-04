@@ -1,18 +1,19 @@
-package org.firstinspires.ftc.teamcode.auto;
+package org.firstinspires.ftc.teamcode.auto.IntoTheDeep;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.Parts;
-import org.firstinspires.ftc.teamcode.util.OurRobot;
+import org.firstinspires.ftc.teamcode.util.IntoTheDeep.OurRobot;
 
 /**
- * This Auto moves forward to score the pre-load specimen then moves to park (observation side)
+ * This Auto that simply moves the robot to forward to place the pre-load specimen then back to the start (net side)
  * Used in the last qual competition
  */
-@Autonomous (name = "Observation side", group = "old Auto")
+
+@Autonomous (name = "Net side", group = "old Auto")
 //@Disabled
-public class Observation extends LinearOpMode {
+public class Net extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         Parts config = new Parts(hardwareMap); // configure robot
         OurRobot robot = new OurRobot();
@@ -47,10 +48,6 @@ public class Observation extends LinearOpMode {
         // move back
         robot.moveRobot(-0.5, 0, 0);
         sleep(2000);
-        robot.moveRobot(0, -0.5, 0); // move to park
-        sleep(2500);
-        robot.moveRobot(-0.25, 0, 0); // back into wall to straighten
-        sleep(500);
         robot.moveRobot(0, 0, 0);
 
         // set arm to start position

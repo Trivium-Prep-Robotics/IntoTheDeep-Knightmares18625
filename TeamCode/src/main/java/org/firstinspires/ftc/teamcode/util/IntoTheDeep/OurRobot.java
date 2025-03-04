@@ -1,10 +1,13 @@
-package org.firstinspires.ftc.teamcode.util;
+package org.firstinspires.ftc.teamcode.util.IntoTheDeep;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.teamcode.Parts;
+import org.firstinspires.ftc.teamcode.util.Arm;
+import org.firstinspires.ftc.teamcode.util.Claw;
+import org.firstinspires.ftc.teamcode.util.Drive;
 
 public class OurRobot implements Arm, Claw, Drive {
     /**

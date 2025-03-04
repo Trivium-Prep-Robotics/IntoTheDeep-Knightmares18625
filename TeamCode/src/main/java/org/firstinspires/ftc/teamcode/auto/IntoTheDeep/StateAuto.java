@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.auto;
+package org.firstinspires.ftc.teamcode.auto.IntoTheDeep;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.pedropathing.follower.Follower;
@@ -12,7 +12,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.Parts;
-import org.firstinspires.ftc.teamcode.util.OurRobot;
+import org.firstinspires.ftc.teamcode.util.IntoTheDeep.OurRobot;
 import org.firstinspires.ftc.teamcode.util.pedroPathing.constants.FConstants;
 import org.firstinspires.ftc.teamcode.util.pedroPathing.constants.LConstants;
 
