@@ -1,8 +1,5 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.pedropathing.follower.Follower;
-import com.pedropathing.localization.Pose;
-import com.pedropathing.util.Constants;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -11,14 +8,12 @@ import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.ServoImplEx;
 
-import org.firstinspires.ftc.teamcode.util.pedroPathing.constants.FConstants;
-import org.firstinspires.ftc.teamcode.util.pedroPathing.constants.LConstants;
-
 public class Parts {
 
     // declaring parts
+    // TODO: get rid of and/or add any parts you need
     public static DcMotor FR, FL, BR, BL;
-    public static DcMotor piv1, piv2, arm;
+    public static DcMotor piv1, piv2;
     public static DcMotor slide;
     public static Servo claw, wrist;
 
@@ -29,73 +24,61 @@ public class Parts {
     /**
      * important variables
      */
-    public static double ticksPerRev = 5281.1;
-    public static double pivTPR = 5 * ticksPerRev;
-    public static double slideTPR = ticksPerRev / 2;
-    public static int armLow = (int)(Parts.pivTPR * 0.00);
-    public static int armHigh = (int)(Parts.pivTPR * 0.25);
-    public static int slideHigh = (int)(Parts.slideTPR * 0.00);
-    public static int slideLow = -56000;
-
-    public static double setArm = 0;
-    public static int setSlide = 0;
-
-
-    public static double slideTicksZero = 0;
-    public static double slidePose = 0;
-
-    public static boolean inEncoderS = false;
-    public static boolean inEncoderA = false;
-    public static boolean lims = false;
 
     public static double armPower;
     public static double extendPower;
-    public static double armToExtend = 0.1;
+    public static double driveMaxSpd = 1;
+    public static double driveSlwSpd = 0.5;
 
     public static double openClaw;
     public static double closeClaw;
 
     public static double sample;
     public static double specimen;
-    public static double driveMaxSpd = 1;
-    public static double driveSlwSpd = 0.5;
 
-    public final Pose tStartPose = new Pose(0,0,Math.toRadians(0));
-
-    public static Pose currentPose = new Pose(0,0,Math.toRadians(0));
+    /**
+     * You can put any other varaibles you'd like to here as well, just make sure they are public static
+     * I'd recommend stuff like the following:
+     */
+    public static double ticksPerRev; // for encoders
+    public static double armGearRatio; // if you use gears for example
 
     public Parts(HardwareMap hardwareMap) {
 
-        // assigning drive train motors
+
+        // TODO: assign drive train names here
         FR = hardwareMap.get(DcMotor.class, "rightFront");
         FL = hardwareMap.get(DcMotor.class, "leftFront");
         BR = hardwareMap.get(DcMotor.class, "rightRear");
         BL = hardwareMap.get(DcMotor.class, "leftRear");
 
-        // reverse left side
+        // TODO: reverse any motors that go the opposite direction
         FL.setDirection(DcMotorSimple.Direction.REVERSE);
         BL.setDirection(DcMotorSimple.Direction.REVERSE);
+
         // when setPower(0) -> motors brake
         FR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         FL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         BR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         FL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        // assigning arm pivot motors
+        // TODO: assigning other motors used here
         piv1 = hardwareMap.get(DcMotor.class, "pivotOne");
         piv2 = hardwareMap.get(DcMotor.class, "pivotTwo");
+        slide = hardwareMap.get(DcMotor.class, "slide");
 
+        // TODO: reverse any motors you need
+        // we had two motors for our pivot
         piv1.setDirection(DcMotorSimple.Direction.REVERSE);
         piv2.setDirection(DcMotorSimple.Direction.REVERSE);
 
+        // if you use encoders this is needed
         piv1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         piv2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         piv1.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         piv2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        // assigning slides
-        slide = hardwareMap.get(DcMotor.class, "slide");
         slide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         slide.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
@@ -104,17 +87,18 @@ public class Parts {
         piv2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         slide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        // assigning claw and wrist servo
-        claw = hardwareMap.get(Servo.class, "claw");
+        // TODO: assigning servos here
+        claw = hardwareMap.get(ServoImplEx.class, "claw");
         wrist = hardwareMap.get(ServoImplEx.class, "wrist");
 
-        // IMU
-        imu = hardwareMap.get(IMU.class, "imu"); // Initializing IMU in Drivers Hub
+        // TODO: assign and set up IMU here
+        imu = hardwareMap.get(IMU.class, "imu");
         // Reconfiguring IMU orientation
         myIMUparameters = new IMU.Parameters(
                 new RevHubOrientationOnRobot(
-                        RevHubOrientationOnRobot.LogoFacingDirection.UP,
-                        RevHubOrientationOnRobot.UsbFacingDirection.RIGHT
+                        // TODO: this is what you'll need to change this is for the orientation of your control hub
+                        RevHubOrientationOnRobot.LogoFacingDirection.UP, // what direction the logo is facing
+                        RevHubOrientationOnRobot.UsbFacingDirection.RIGHT // what direction the USB is facing
                 )
         );
         imu.initialize(myIMUparameters);
