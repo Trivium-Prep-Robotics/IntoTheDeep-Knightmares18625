@@ -1,40 +1,26 @@
 # How to Use This
-This repository is a fork of the [ftcRobotControler](https://github.com/FIRST-Tech-Challenge/FtcRobotController). This repository has extra skeleton code to have a head start when starting the season.
-
-The two repositories that fork from this are [18625-Trivium-Knightmares](https://github.com/Trivium-Prep-Robotics/18625-Trivium-Knightmares) and [14254-Trivium-Knightlights](https://github.com/Trivium-Prep-Robotics/14254-Trivium-Knightligths)
-
-![image](https://github.com/user-attachments/assets/6c02b179-7de0-48e2-8849-99d6d2f8d264)
+This repository is a fork of the [Trivium-Robotics](https://github.com/Trivium-Prep-Robotics/Trivium-Robotics/tree/master) repo. This is Knightmares' code
 
 ## Updating this Repo
-As of right now this repo is ahead
-![image](https://github.com/user-attachments/assets/11f62a3e-fc08-4635-81d9-bf846b843240)
-But if it is ever behind you need update this repo
 
-![image](https://github.com/user-attachments/assets/c7c4e973-367f-4cb0-b707-4ad3ff2c1b4e)
-
-- To start you can use the git command `git remote -v` to check that you have the upstream set.
-
-  - If you get this:
-
-![image](https://github.com/user-attachments/assets/9e8fddb2-db40-4c07-9a16-f21c25ec8c66)
-
-Your good, but if you got this:
-
-![image](https://github.com/user-attachments/assets/d4d73de4-ac05-4120-919c-118643cdd72b)
-
-Type `git remote add upstream https://github.com/FIRST-Tech-Challenge/FtcRobotController` and then when you do that again you can check with `git remote -v`
+To start use the command `git remote -v` to check that the upstream is set, if not then use: `git remote add upstream https://github.com/Trivium-Prep-Robotics/Trivium-Robotics/tree/master` to set it. Again just double check with `git remote -v`
 
 - The next step is to download the recent changes into the local Git base. To do this use `git fetch upstream`.
 
-- Next step is to use `git merge upstream/master --commit -m "merge from upstream"`
-
+- Next step is to use `git merge upstream/master --no-commit`
+  - We don't commit because we are going to restore the README.md file
+  - To do this we use `git checkout HEAD -- TeamCode\src\main\java\org\firstinspires\ftc\teamcode\README.md`
+  - If you have any other files/folders to restore you can use the same command for those
+- Once you are ready to commit use `git commit -m "message"`
 - Perfect. To finalize it just use `git push origin master`
 
 The command line should look like this:
 ```
 git remote add upstream https://github.com/FIRST-Tech-Challenge/FtcRobotControllerhttps://github.com/FIRST-Tech-Challenge/FtcRobotController
 git fetch upstream
-git merge upstream/main --commit -m "merge from upstream"
+git merge upstream/main --no-commit
+git checkout HEAD -- TeamCode\src\main\java\org\firstinspires\ftc\teamcode\README.md
+git commit -m "message"
 git push origin main
 ```
 
@@ -62,8 +48,10 @@ Interfaces, Robot class, and other util
 - [Drive interface](https://github.com/Trivium-Prep-Robotics/Trivium-Robotics/blob/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/util/Drive.java) drive methods.
 - [Robot](https://github.com/Trivium-Prep-Robotics/Trivium-Robotics/blob/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/util/Robot.java) is the class with all the methods, implement all the interfaces you use, and define all of them (IF YOU DON'T USE THEM LEAVE THEM BLANK, BUT STILL HAVE THEM).
 - Add any interfaces and classes you would like depending on what your robot is. The one I would recommend using generally all the time is the drive one until you are advanced enough to use something such as RoadRunner or Pedro Pathing.
-- If you make your own interfaces be sure to add the interface here.
 - Also add any extra methods to the interfaces if you have extra, for example if your arm has an elbow, add those methods
+
+### Past years
+You'll notice that there are folders named after past seasons, this is simply the old code for those seasons
 
 # Coding sources
 - [w3schools java](https://www.w3schools.com/java/default.asp) - great source for understanding java concepts.
