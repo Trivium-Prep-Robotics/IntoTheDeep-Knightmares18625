@@ -37,8 +37,6 @@ git fetch upstream
 git merge upstream/main --commit -m "merge from upstream"
 git push origin main
 ```
-## Updating the other two repos
-You do the same thing, but make sure that the upstream link is https://github.com/Trivium-Prep-Robotics/Trivium-Robotics instead
 
 ## What is in this repo?
 This is good skeleton code to start the season.
@@ -54,20 +52,18 @@ This class has the robot configured in it.
 - Servo
   - We have the claw and wrist servo, again delete these and put any servos that you use instead.
  - I also have variables in there and you can put any that you want to use throughout the code it just has to be public static to be accessible outside of the class
-### [Parts folder](https://github.com/Trivium-Prep-Robotics/Trivium-Robotics/tree/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/parts)
-This contains all the interfaces and the classes that implement them.
+### [util](https://github.com/Trivium-Prep-Robotics/Trivium-Robotics/tree/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/util)
+Interfaces, Robot class, and other util
 #### We have:
-- [Arm interface](https://github.com/Trivium-Prep-Robotics/Trivium-Robotics/blob/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/parts/Arm.java)
+- [[Arm interface]((https://github.com/Trivium-Prep-Robotics/Trivium-Robotics/blob/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/util/Arm.java)
   - Methods for a robot with pivot and extend
-  - [ArmTemplate](https://github.com/Trivium-Prep-Robotics/Trivium-Robotics/blob/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/parts/ArmTemplate.java) implements this interface and you can fill out the methods with whatever code you want it to do and if you dont want a method leave it blank (if you delete it, it will have an error).
 - [Claw interface](https://github.com/Trivium-Prep-Robotics/Trivium-Robotics/blob/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/parts/Claw.java)
-  - Methods for a claw witha wrist
-  - [ClawTemplate](https://github.com/Trivium-Prep-Robotics/Trivium-Robotics/blob/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/parts/ClawTemplate.java) implements this interface and you can fill out the methods with whatever code you want it to do and if you dont want a method leave it blank (if you delete it, it will have an error).
-- [Drive interface](https://github.com/Trivium-Prep-Robotics/Trivium-Robotics/blob/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/parts/Drive.java) drive methods.
-  - [DriveTemplate](https://github.com/Trivium-Prep-Robotics/Trivium-Robotics/blob/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/parts/DriveTemplate.java) is already filled out but you could change it if you would like.
-- [OurRobot](https://github.com/Trivium-Prep-Robotics/Trivium-Robotics/blob/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/parts/OurRobot.java) is the class you should actually use for defining the methods you can use the other templates if you would like to isolate stuff, but just implement all of the interfaces you want to use in this class and add in the methods (again if you don't want to use one of the methods put it in but leave it blank as not to cause problems.
+  - Methods for a claw with a wrist
+- [Drive interface](https://github.com/Trivium-Prep-Robotics/Trivium-Robotics/blob/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/util/Drive.java) drive methods.
+- [Robot](https://github.com/Trivium-Prep-Robotics/Trivium-Robotics/blob/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/util/Robot.java) is the class with all the methods, implement all the interfaces you use, and define all of them (IF YOU DON'T USE THEM LEAVE THEM BLANK, BUT STILL HAVE THEM).
 - Add any interfaces and classes you would like depending on what your robot is. The one I would recommend using generally all the time is the drive one until you are advanced enough to use something such as RoadRunner or Pedro Pathing.
 - If you make your own interfaces be sure to add the interface here.
+- Also add any extra methods to the interfaces if you have extra, for example if your arm has an elbow, add those methods
 
 # Coding sources
 - [w3schools java](https://www.w3schools.com/java/default.asp) - great source for understanding java concepts.
