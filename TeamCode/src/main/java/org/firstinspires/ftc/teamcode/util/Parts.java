@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.util.IntoTheDeep;
+package org.firstinspires.ftc.teamcode.util;
 
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -25,27 +25,23 @@ public class Parts {
      * important variables
      */
 
-    public static double ticksPerRev = 5281.1;
-    public static double pivTPR = 5 * ticksPerRev;
-    public static double slideTPR = ticksPerRev / 2;
-
-
-
-
-    public static boolean inEncoderS = false;
-
     public static double armPower;
     public static double extendPower;
-    public static double armToExtend = 0.1;
+    public static double driveMaxSpd = 1;
+    public static double driveSlwSpd = 0.5;
 
     public static double openClaw;
     public static double closeClaw;
 
     public static double sample;
     public static double specimen;
-    public static double driveMaxSpd = 1;
-    public static double driveSlwSpd = 0.5;
 
+    /**
+     * You can put any other varaibles you'd like to here as well, just make sure they are public static
+     * I'd recommend stuff like the following:
+     */
+    public static double ticksPerRev; // for encoders
+    public static double armGearRatio; // if you use gears for example
 
     public Parts(HardwareMap hardwareMap) {
 

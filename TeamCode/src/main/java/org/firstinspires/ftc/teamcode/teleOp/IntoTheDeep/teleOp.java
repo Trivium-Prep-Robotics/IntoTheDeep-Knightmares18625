@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode.teleOp.IntoTheDeep;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.Parts;
+import org.firstinspires.ftc.teamcode.util.IntoTheDeep.Parts;
 import org.firstinspires.ftc.teamcode.util.IntoTheDeep.OurRobot;
 
 

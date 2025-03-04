@@ -11,7 +11,7 @@ import com.pedropathing.util.Timer;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import org.firstinspires.ftc.teamcode.Parts;
+import org.firstinspires.ftc.teamcode.util.IntoTheDeep.Parts;
 import org.firstinspires.ftc.teamcode.util.IntoTheDeep.OurRobot;
 import org.firstinspires.ftc.teamcode.util.pedroPathing.constants.FConstants;
 import org.firstinspires.ftc.teamcode.util.pedroPathing.constants.LConstants;
