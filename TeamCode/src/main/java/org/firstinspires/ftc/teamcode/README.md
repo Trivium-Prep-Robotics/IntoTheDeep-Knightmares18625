@@ -24,6 +24,26 @@ git commit -m "message"
 git push origin main
 ```
 
+## Gradle
+You'll need to adjust the gradle when you update this repo.
+### First
+Go to `build.dependencies.gradle` and replace the repositories block with this:
+```
+repositories {
+    mavenCentral()
+    google() // Needed for androidx
+    maven { url= 'https://maven.pedropathing.com/' }
+    maven { url = 'https://maven.brott.dev/' }
+}
+```
+### Second
+Add the following to the dependencies block:
+```
+    implementation 'com.pedropathing:pedro:[VERSION]'
+    implementation 'com.acmerobotics.dashboard:dashboard:0.4.16'
+```
+### Sync gradle
+
 ## What is in this repo?
 This is good skeleton code to start the season.
 
