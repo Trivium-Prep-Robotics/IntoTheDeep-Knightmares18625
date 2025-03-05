@@ -27,10 +27,13 @@ git push origin main
 ## What is in this repo?
 This is good skeleton code to start the season.
 
-- The [teleOp folder](https://github.com/Trivium-Prep-Robotics/Trivium-Robotics/tree/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/teleOp) already has skeleton teleOp code that already has field centric drive and imports the parts, arm, claw, and drive classes that are used.
-- The [auto folder](https://github.com/Trivium-Prep-Robotics/Trivium-Robotics/tree/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/teleOp) already has skeleton auto code as well.
+- The [teleOp folder](https://github.com/Trivium-Prep-Robotics/18625-Trivium-Knightmares/tree/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/teleOp) already has skeleton teleOp code that already has field centric drive and imports the parts, arm, claw, and drive classes that are used.
+- The [auto folder](https://github.com/Trivium-Prep-Robotics/18625-Trivium-Knightmares/tree/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/auto) already has skeleton auto code as well.
 
-### [Parts](https://github.com/Trivium-Prep-Robotics/Trivium-Robotics/blob/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Parts.java)
+### [util](https://github.com/Trivium-Prep-Robotics/18625-Trivium-Knightmares/tree/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/util)
+Interfaces, Robot class, and other util
+
+#### [Parts](https://github.com/Trivium-Prep-Robotics/18625-Trivium-Knightmares/blob/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/util/Parts.java)
 This class has the robot configured in it. 
 - The drive train motors all you have to do is change their name to what is in the control hub configuration.
 - Has other motors as well like piv1, piv2, and slides
@@ -38,15 +41,13 @@ This class has the robot configured in it.
 - Servo
   - We have the claw and wrist servo, again delete these and put any servos that you use instead.
  - I also have variables in there and you can put any that you want to use throughout the code it just has to be public static to be accessible outside of the class
-### [util](https://github.com/Trivium-Prep-Robotics/Trivium-Robotics/tree/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/util)
-Interfaces, Robot class, and other util
 #### We have:
-- [[Arm interface]((https://github.com/Trivium-Prep-Robotics/Trivium-Robotics/blob/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/util/Arm.java)
+- [Arm interface](https://github.com/Trivium-Prep-Robotics/18625-Trivium-Knightmares/blob/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/util/Arm.java)
   - Methods for a robot with pivot and extend
-- [Claw interface](https://github.com/Trivium-Prep-Robotics/Trivium-Robotics/blob/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/parts/Claw.java)
+- [Claw interface](https://github.com/Trivium-Prep-Robotics/18625-Trivium-Knightmares/blob/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/util/Claw.java)
   - Methods for a claw with a wrist
-- [Drive interface](https://github.com/Trivium-Prep-Robotics/Trivium-Robotics/blob/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/util/Drive.java) drive methods.
-- [Robot](https://github.com/Trivium-Prep-Robotics/Trivium-Robotics/blob/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/util/Robot.java) is the class with all the methods, implement all the interfaces you use, and define all of them (IF YOU DON'T USE THEM LEAVE THEM BLANK, BUT STILL HAVE THEM).
+- [Drive interface](https://github.com/Trivium-Prep-Robotics/18625-Trivium-Knightmares/blob/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/util/Drive.java) drive methods.
+- [Robot](https://github.com/Trivium-Prep-Robotics/18625-Trivium-Knightmares/blob/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/util/Robot.java) is the class with all the methods, implement all the interfaces you use, and define all of them (IF YOU DON'T USE THEM LEAVE THEM BLANK, BUT STILL HAVE THEM).
 - Add any interfaces and classes you would like depending on what your robot is. The one I would recommend using generally all the time is the drive one until you are advanced enough to use something such as RoadRunner or Pedro Pathing.
 - Also add any extra methods to the interfaces if you have extra, for example if your arm has an elbow, add those methods
 
